@@ -2,113 +2,153 @@
 
 &nbsp;
 
-## If/Else Continued
+## Arrays
 
-What is a Function?
+The JavaScript Array class is a global object that is used in the construction of arrays; which are high-level, list-like objects.
 
-A function is a subprogram designed to perform a particular task.
+JavaScript arrays are used to store multiple values in a single variable.
 
-Functions are executed when they are called. This is known as invoking a function. Values can be passed into functions and used within the function.
+    var cars = ["Saab", "Volvo", "BMW"];
 
-Functions always return a value. In JavaScript, if no return value is specified, the function will return undefined.
+&nbsp;
 
-    function nameOfFunction(parameter) {
-    // code to be executed
+## Array Methods
+
+The strength of JavaScript arrays lies in the array methods. Array methods are functions built-in to JavaScript that we can apply to our arrays — Each method has a unique function that performs a change or calculation to our array and saves us from writing common functions from scratch.
+
+One method example .toString()
+
+The JavaScript method .toString() converts an array to a string of (comma separated) array values.
+
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+    document.getElementById("demo").innerHTML = fruits.toString();
+
+    Result: Banana,Orange,Apple,Mango
+
+&nbsp;
+
+## For Loops
+
+Loops can execute a block of code a number of times.
+
+The for loop has the following syntax:
+
+The JavaScript for loop statement allows you to create a loop with three optional expressions. The following illustrates the syntax of the for loop statement:
+
+    for (initialization; condition; post-expression) {
+        // statements
+    }
+
+
+    for (i = 0; i < 5; i++) {
+    text += "The number is " + i + "<br>";
+    }
+
+From the example above, you can read:
+
+Statement 1, sets a variable before the loop starts (var i = 0).
+
+Statement 2, defines the condition for the loop to run (i must be less than 5).
+
+Statement 3, increases a value (i++) each time the code block in the loop has been executed.
+
+&nbsp;
+
+JavaScript supports different kinds of loops:
+
+- for - loops through a block of code a number of times
+
+- for/in - loops through the properties of an object
+
+- for/of - loops through the values of an iterable object
+- while - loops through a block of code while a specified condition is true
+- do/while - also loops through a block of code while a specified condition is true
+
+&nbsp;
+
+## For of Loops
+
+for/of - loops through the values of an iterable object
+
+For...of iterates arrays, array-like objects, and generally any iterable (maps, sets, DOM collections). You can destructure the iterated item in place. On top of that, for...of has a short syntax.
+
+Syntax:
+
+    for (variable of iterable) {
+    // code block to be executed
+    }
+
+For example:
+
+    const products = ['oranges', 'apples'];
+
+    for (const product of products) {
+    console.log(product);
+    }
+    // 'oranges'
+    // 'apples'
+
+for...of cycle iterates over every item of products. The iterated item is assigned to the variable product.
+
+&nbsp;
+
+## Truthy & Falsy Values in JavaScript
+
+Internally, JavaScript sets a value to one of six primitive data types:
+
+- Undefined (a variable with no defined value)
+- Null (a single null value)
+- Boolean (true or false)
+- Number (this includes Infinity and NaN – not a number!)
+- String (textual data)
+- Symbol (a unique and immutable primitive new to ES6/2015)
+
+Everything else is an Object — including arrays.
+
+As well as a type, each value also has an inherent boolean value, generally known as either truthy or falsy. Some of the rules are a little bizarre so understanding the concepts and effect on comparison helps when debugging JavaScript applications.
+
+&nbsp;
+
+The following values are always falsy:
+
+- false
+- 0 (zero)
+- '' or "" (empty string)
+- null
+- undefined
+- NaN
+
+Everything else is truthy. That includes:
+
+- '0' (a string containing a single zero)
+- 'false' (a string containing the text “false”)
+- [] (an empty array)
+- {} (an empty object)
+- function(){} (an “empty” function)
+
+&nbsp;
+
+A single value can therefore be used within conditions, example:
+
+    if (value) {
+    // value is truthy
+    }
+    else {
+    // value is falsy
+    // it could be false, 0, '', null, undefined or NaN
     }
 
 &nbsp;
 
-## Node
+## Compound Booleans
 
-Function parameters are the names listed in the function definition.
+We can implement any logic in a program using only nested conditionals. However, we can make shorter and more expressive code by combining simple Boolean expressions using logical operators (and, or, not) to create compound Boolean expressions.
 
-Function arguments are the real values passed to (and received by) the function.
+The OR operator
 
-    function  nameOfFunction(parameter1, parameter2) {
-     // code to be executed
+Using the OR ( || ) operator, we can create a compound expression that is true when either of two conditions are true.
+
+    if (cspGrade >= 75 || progGrade >= 75) {
+    console.log("You're eligible for AP CS A!");
     }
-
-&nbsp;
-
-## Return Values
-
-Every function in JavaScript returns undefined unless otherwise specified.
-
-When JavaScript reaches a return statement, the function will stop running.
-
-    str = "John";
-
-    function logMyFirstName(str) {
-    console.log(str);
-    }
-
-    // Will log "John" to the console
-
-&nbsp;
-
-    function test(){
-    return true;
-    }
-
-    test();
-    // true
-
-&nbsp;
-
-## Booleans
-
-JS primitive data types
-
-1. Strings
-2. Numbers
-3. Booleans = True or False
-4. NaN = Not a number
-5. Null = The value null represents the intentional absence of any object value. It is one of JavaScript's primitive values and is treated as falsy for boolean operations.
-6. Undefined = The undefined property indicates that a variable has not been assigned a value, or not declared at all.
-
-A JavaScript Boolean represents one of two values: true or false.
-
-Very often, in programming, you will need a data type that can only have one of two values, like
-
-- YES / NO
-- ON / OFF
-- TRUE / FALSE
-
-For this, JavaScript has a Boolean data type. It can only take the values true or false.
-
-&nbsp;
-
-## &&, ||(or), if, else
-
-Conditional Statements
-
-Very often when you write code, you want to perform different actions for different decisions.
-
-You can use conditional statements in your code to do this.
-
-In JavaScript we have the following conditional statements:
-
-- Use if to specify a block of code to be executed, if a specified condition is true
-- Use else to specify a block of code to be executed, if the same condition is false
-- Use else if to specify a new condition to test, if the first condition is false
-
-      function nameOfFunction(parameter) {
-      if (condition) {
-      // block of code to be executed if the condition is true
-      } else {
-      // block of code to be executed if the condition is false
-      }
-
-&nbsp;
-
-## Testing With Quokka & Jest
-
-Quokka.js is a rapid prototyping playground in your editor, with access to your project’s files, inline reporting, code coverage and rich output formatting. Runtime values are updated and displayed in your IDE next to your code, as you type
-
-[quokka](https://quokkajs.com/)
-
-&nbsp;
-
-Jest is a delightful JavaScript Testing Framework with a focus on simplicity. It works with projects using: Babel, TypeScript, Node, React, Angular, Vue and more!
-
-[jest](https://jestjs.io/)
